@@ -1,0 +1,69 @@
+{% extends "base.html" %}
+
+{% block title %}Admin Panel{% endblock %}
+
+{% block content %}
+<div class="container my-5">
+    <h1 class="mb-4 fw-bold">Admin Dashboard</h1>
+
+    <div class="row mb-4">
+        <div class="col-md-4">
+            <div class="card text-white shadow-sm" style="background-color: #393E46;">
+                <div class="card-body">
+                    <h5 class="card-title">Total Users</h5>
+                    <p class="card-text fs-2 fw-bold">{{ user_count }}</p>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-4">
+            <div class="card text-white shadow-sm" style="background-color: #948979;">
+                <div class="card-body">
+                    <h5 class="card-title">Total Projects</h5>
+                    <p class="card-text fs-2 fw-bold">{{ issue_count }}</p>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-4">
+            <div class="card text-dark shadow-sm" style="background-color: #DFD0B8;">
+                <div class="card-body">
+                    <h5 class="card-title">Comments</h5>
+                    <p class="card-text fs-2 fw-bold">_</p> </div>
+            </div>
+        </div>
+    </div>
+
+    <h2 class="mt-5">User Management</h2>
+    <div class="card">
+        <div class="card-body">
+            <div class="table-responsive">
+                <table class="table table-hover">
+                    <thead>
+                        <tr>
+                            <th scope="col">#</th>
+                            <th scope="col">Username</th>
+                            <th scope="col">Email</th>
+                            <th scope="col">Role</th>
+                            <th scope="col">Joined</th>
+                            <th scope="col">Actions</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for user in users %}
+                        <tr>
+                            <th scope="row">{{ user.id }}</th>
+                            <td>{{ user.username }}</td>
+                            <td>{{ user.email }}</td>
+                            <td><span class="badge bg-secondary">{{ user.role }}</span></td>
+                            <td>{{ user.created_at.strftime('%Y-%m-%d') }}</td>
+                            <td>
+                                <a href="#" class="btn btn-sm btn-outline-danger">Delete</a>
+                            </td>
+                        </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

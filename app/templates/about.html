@@ -1,0 +1,39 @@
+{% extends "base.html" %}
+
+{% block title %}About Us{% endblock %}
+
+{% block content %}
+<div class="container my-5">
+    <div class="row">
+        <div class="col-12 about-us-image-container">
+            <img src="{{ url_for('static', filename='images/about-us.jpg') }}" class="img-fluid rounded mb-5 about-us-image" alt="Dream written in neon lights">
+        </div>
+    </div>
+
+    <div class="row text-center">
+        <div class="col-lg-8 mx-auto">
+            <h1 class="fw-bold">Our Mission</h1>
+            <p class="lead text-muted">
+                ThinkConnect was born from a simple yet powerful idea: to bridge the gap between passionate individuals and the pressing social issues in India that need their attention. Our platform provides the tools and the community for local change-makers, NGO, and volunteers to connect, share, and work together on projects that make a real difference—from improving rural education to ensuring women's safety and promoting mental health awareness.
+            </p>
+        </div>
+    </div>
+
+    <hr class="my-5">
+
+    <div class="row about-vision-approach">
+        <div class="col-md-6 about-vision">
+            <h2 class="fw-bold">Our Vision</h2>
+            <p class="text-muted">
+                To foster a nationwide network of empowered citizens actively building a more equitable and prosperous India for all.
+            </p>
+        </div>
+        <div class="col-md-6 about-approach">
+            <h2 class="fw-bold">Our Approach</h2>
+            <p class="text-muted">
+                We focus on providing a transparent, accessible, and location-aware platform that turns passion into planned, impactful projects.
+            </p>
+        </div>
+    </div>
+</div>
+{% endblock %}

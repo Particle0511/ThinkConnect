@@ -1,0 +1,89 @@
+{% extends "base.html" %}
+
+{% block title %}{{ issue.title }}{% endblock %}
+
+{% block content %}
+<div class="container my-5">
+    <div class="p-5 mb-4 bg-light rounded-3">
+        <h1 class="display-5 fw-bold">{{ issue.title }}</h1>
+        <p class="lead text-muted">Posted by <a href="{{ url_for('main.profile', username=issue.author.username) }}" class="text-reset">{{ issue.author.username }}</a> on {{ issue.date_posted.strftime('%B %d, %Y') }}</p>
+        <hr class="my-4">
+        <div class="d-flex align-items-center">
+            <span class="badge bg-category me-3 fs-6">{{ issue.category }}</span>
+            <span class="me-3"><strong>Mode:</strong> {{ issue.mode }}</span>
+            <span class="fw-bold fs-5">Slots: {{ remaining_slots }} / {{ issue.total_slots }} Available</span>
+        </div>
+    </div>
+
+    <div class="row mb-5">
+        <div class="col-lg-10">
+            {% if current_user.is_authenticated %}
+                {% if user_has_booked %}
+                    <div class="alert alert-success fw-bold">
+                        You have a confirmed booking for this event.
+                    </div>
+                {% elif remaining_slots > 0 %}
+                    <form action="{{ url_for('main.book_slot', issue_id=issue.id) }}" method="POST">
+                        <button type="submit" class="btn btn-success btn-lg">Book Your Slot Now</button>
+                    </form>
+                {% else %}
+                    <div class="alert alert-danger fw-bold">
+                        All slots for this event are currently booked.
+                    </div>
+                {% endif %}
+            {% else %}
+                <div class="alert alert-info">
+                    <a href="{{ url_for('main.login') }}">Log in</a> to book a slot.
+                </div>
+            {% endif %}
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-lg-10">
+            <h2 class="mb-3">Project Details</h2>
+            <p>{{ issue.description | safe }}</p>
+        </div>
+    </div>
+    
+    <hr class="my-5">
+
+    <div class="row">
+        <div class="col-lg-10">
+            <h2 class="mb-4">Comments ({{ comments|length }})</h2>
+
+            {% if current_user.is_authenticated %}
+                <div class="mb-4">
+                    <form method="POST" action="">
+                        {{ form.hidden_tag() }}
+                        <div class="mb-3">
+                            {{ form.content(class="form-control form-control-lg", rows="3", placeholder="Add a comment...") }}
+                        </div>
+                        {{ form.submit(class="btn btn-custom-primary") }}
+                    </form>
+                </div>
+            {% else %}
+                <div class="alert alert-secondary">
+                    <a href="{{ url_for('main.login') }}">Log in</a> to post a comment.
+                </div>
+            {% endif %}
+
+            {% if comments %}
+                {% for comment in comments %}
+                    <div class="d-flex my-4">
+                        <div class="flex-shrink-0">
+                            <img class="rounded-circle" src="{{ url_for('static', filename='images/default-profile.png') }}" alt="User avatar" width="50" height="50">
+                        </div>
+                        <div class="ms-3">
+                            <div class="fw-bold">{{ comment.author.username }} <small class="text-muted ms-2">{{ comment.date_posted.strftime('%d %b %Y') }}</small></div>
+                            {{ comment.content }}
+                        </div>
+                    </div>
+                {% endfor %}
+            {% else %}
+                <p class="text-muted">No comments yet. Be the first to share your thoughts!</p>
+            {% endif %}
+        </div>
+    </div>
+</div>
+{% endblock %}

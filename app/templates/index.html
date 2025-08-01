@@ -1,0 +1,69 @@
+{% extends "base.html" %}
+
+{% block title %}ThinkConnect - Collaborate for Change{% endblock %}
+
+{% block content %}
+    <div class="p-5 mb-5 rounded-3 text-white" style="background-image: url('{{ url_for('static', filename='images/hero-background.jpg') }}'); background-size: cover; background-position: center;">
+        <div class="container-fluid py-5 bg-dark bg-opacity-75 rounded p-4">
+            <h1 class="display-4 fw-bold">Connect. Collaborate. Create Change.</h1>
+            <p class="col-md-8 fs-4">Join a community of local change-makers, NGOs, and citizens passionate about solving India's social challenges.</p>
+            <a href="{{ url_for('main.signup') }}" class="btn btn-custom-primary btn-lg">Join the Movement</a>
+            <a href="{{ url_for('main.issues') }}" class="btn btn-outline-light btn-lg">Explore Projects</a>
+        </div>
+    </div>
+
+    <div class="row text-center my-5">
+        <h2 class="mb-4">How It Works</h2>
+        <div class="col-lg-4 d-flex align-items-stretch">
+            <a href="{{ url_for('main.post_issue') }}" class="how-it-works-link">
+                <div class="card h-100 flat-card">
+                    <div class="card-body p-4">
+                        <h3 class="card-title h4 fw-bold">1. Post an Idea</h3>
+                        <p class="card-text text-muted">Identify a social problem and propose a solution. Share your vision with the community.</p>
+                    </div>
+                </div>
+            </a>
+        </div>
+        <div class="col-lg-4 d-flex align-items-stretch">
+            <a href="{{ url_for('main.issues') }}" class="how-it-works-link">
+                <div class="card h-100 flat-card">
+                    <div class="card-body p-4">
+                        <h3 class="card-title h4 fw-bold">2. Find Partners</h3>
+                        <p class="card-text text-muted">Discover ongoing projects, connect with NGOs, and find volunteers who share your passion.</p>
+                    </div>
+                </div>
+            </a>
+        </div>
+        <div class="col-lg-4 d-flex align-items-stretch">
+            <a href="{{ url_for('main.issues') }}" class="how-it-works-link">
+                <div class="card h-100 flat-card">
+                    <div class="card-body p-4">
+                        <h3 class="card-title h4 fw-bold">3. Make an Impact</h3>
+                        <p class="card-text text-muted">Collaborate to bring ideas to life. Track your contribution and see the collective impact.</p>
+                    </div>
+                </div>
+            </a>
+        </div>
+    </div>
+
+    <div class="my-5">
+        <h2 class="text-center mb-4">Recently Posted Issues</h2>
+        <div class="list-group recent-issues-list">
+            {% if issues %}
+                {% for issue in issues %}
+                    <a href="{{ url_for('main.issue_details', issue_id=issue.id) }}" class="list-group-item list-group-item-action d-flex justify-content-between align-items-center">
+                        <div>
+                            <h5 class="mb-1 fw-bold">{{ issue.title }}</h5>
+                            <p class="mb-1 text-muted">
+                                Author: {{ issue.author.username }} | Category: <span class="badge bg-category">{{ issue.category }}</span>
+                            </p>
+                        </div>
+                        <span class="text-muted">{{ issue.date_posted.strftime('%d %b %Y') }}</span>
+                    </a>
+                {% endfor %}
+            {% else %}
+                <p class="text-center text-muted">No issues have been posted yet. Be the first!</p>
+            {% endif %}
+        </div>
+    </div>
+{% endblock %}

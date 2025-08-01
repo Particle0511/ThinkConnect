@@ -1,0 +1,37 @@
+{% extends "base.html" %}
+
+{% block title %}Post a New Issue{% endblock %}
+
+{% block content %}
+<div class="auth-container">
+    <div class="auth-form-box">
+        <h2 class="text-center mb-4">Post a New Issue</h2>
+        <form method="POST" action="">
+            {{ form.hidden_tag() }}
+            <div class="mb-3">
+                {{ form.title.label(class="form-label") }}
+                {{ form.title(class="form-control form-control-lg") }}
+            </div>
+            <div class="mb-3">
+                {{ form.category.label(class="form-label") }}
+                {{ form.category(class="form-select form-select-lg") }}
+            </div>
+            <div class="mb-3">
+                {{ form.mode.label(class="form-label") }}
+                {{ form.mode(class="form-control form-control-lg", placeholder="e.g., Online, Pune, etc.") }}
+            </div>
+            <div class="mb-3">
+                {{ form.total_slots.label(class="form-label") }}
+                {{ form.total_slots(class="form-control form-control-lg", placeholder="e.g., 50") }}
+            </div>
+            <div class="mb-3">
+                {{ form.description.label(class="form-label") }}
+                {{ form.description(class="form-control form-control-lg", rows="5") }}
+            </div>
+            <div class="d-grid mt-4">
+                {{ form.submit(class="btn btn-custom-primary btn-lg") }}
+            </div>
+        </form>
+    </div>
+</div>
+{% endblock %}

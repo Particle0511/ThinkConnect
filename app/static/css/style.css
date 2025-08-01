@@ -1,0 +1,233 @@
+/* --- Global Styles & Variables --- */
+:root {
+    --color-dark-1: #222831;
+    --color-dark-2: #393E46;
+    --color-tan-1: #948979;
+    --color-tan-2: #DFD0B8;
+    --color-light: #ffffff;
+    --font-primary: 'Gadugi', sans-serif;
+
+    /* Light Theme Defaults */
+    --bg-color: #fdfdfd;
+    --text-color: var(--color-dark-2);
+    --text-muted-color: #6c757d;
+    --card-bg: var(--color-light);
+    --card-border: var(--color-tan-2);
+    --form-bg: #f8f9fa;
+    --header-bg: var(--color-light);
+    --header-border: #eee;
+    --link-color: var(--color-dark-1);
+}
+
+[data-theme="dark"] {
+    --bg-color: #1a1a1a;
+    --text-color: #f0f0f0;
+    --text-muted-color: #aaa;
+    --card-bg: #2a2a2a;
+    --card-border: var(--color-dark-2);
+    --form-bg: var(--color-dark-2);
+    --header-bg: #242424;
+    --header-border: #333;
+    --link-color: var(--color-tan-2);
+}
+
+body {
+    font-family: var(--font-primary);
+    background-color: var(--bg-color);
+    color: var(--text-color);
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+    transition: background-color 0.3s, color 0.3s;
+}
+
+main.container {
+    flex-grow: 1;
+}
+
+
+/* --- Navbar & Footer --- */
+.navbar {
+    border-bottom: 1px solid var(--header-border);
+    background-color: var(--header-bg) !important;
+    padding-top: 1rem;
+    padding-bottom: 1rem;
+    transition: background-color 0.3s, border-color 0.3s;
+}
+
+.navbar-brand img {
+    height: 40px;
+}
+
+.navbar-brand-text {
+    font-size: 1.5rem;
+    font-weight: bold;
+    margin-left: 10px;
+    color: var(--text-color);
+}
+
+.nav-link {
+    font-weight: bold;
+    color: var(--text-color) !important;
+}
+
+.footer {
+    background-color: var(--color-dark-1);
+    color: var(--color-tan-2);
+}
+
+
+/* --- Custom Button Styles --- */
+.btn-custom-primary {
+    background-color: var(--color-tan-2);
+    color: var(--color-dark-1);
+    border: none;
+    padding: 10px 25px;
+    font-weight: bold;
+    border-radius: 6px;
+    transition: background-color 0.2s ease, color 0.2s ease;
+}
+
+.btn-custom-primary:hover {
+    background-color: var(--color-tan-1);
+    color: var(--color-light);
+}
+
+
+/* --- Authentication Form Styles --- */
+.auth-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 3rem 1rem;
+}
+
+.auth-form-box {
+    background-color: var(--card-bg);
+    padding: 2.5rem;
+    border-radius: 8px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+    width: 100%;
+    max-width: 480px;
+    border: 1px solid var(--card-border);
+    transition: background-color 0.3s, border-color 0.3s;
+}
+
+.text-muted, .text-muted a {
+    color: var(--text-muted-color) !important;
+}
+
+.form-control-lg {
+    padding: 0.8rem 1rem;
+    background-color: var(--form-bg);
+    border-color: var(--card-border);
+    color: var(--text-color);
+}
+
+.form-control-lg:focus, .form-select-lg:focus {
+    background-color: var(--card-bg);
+    border-color: var(--color-tan-1);
+    box-shadow: none;
+    color: var(--text-color);
+}
+
+
+/* --- Project Card Styles ('All Projects' page) --- */
+.project-card {
+    border: 1px solid var(--card-border);
+    border-radius: 8px;
+    transition: transform 0.2s ease, box-shadow 0.2s ease, background-color 0.3s;
+    background-color: var(--card-bg);
+}
+
+.project-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 16px rgba(0,0,0,0.1);
+}
+
+.card-link-wrapper {
+    text-decoration: none;
+    color: inherit;
+}
+
+.project-card-img {
+    height: 180px;
+    object-fit: contain;
+    padding: 20px;
+    background-color: var(--color-dark-2);
+    border-top-left-radius: 8px;
+    border-top-right-radius: 8px;
+}
+
+.badge.bg-category {
+    background-color: var(--color-tan-2) !important;
+    color: var(--color-dark-2);
+    font-weight: normal;
+    padding: 0.4em 0.6em;
+}
+
+
+/* --- Homepage Specific Styles --- */
+.flat-card {
+    border: none;
+    background: none;
+}
+
+.recent-issues-list .list-group-item {
+    padding: 1.5rem;
+    border: 1px solid var(--card-border);
+    background-color: var(--card-bg);
+    color: var(--text-color);
+    margin-bottom: 1rem;
+    border-radius: 8px;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+}
+
+.how-it-works-link {
+    text-decoration: none;
+    color: inherit;
+    display: block;
+    width: 100%;
+    border-radius: 12px;
+    transition: transform 0.3s ease, box-shadow 0.3s ease, background-color 0.3s ease;
+}
+
+.how-it-works-link:hover {
+    transform: translateY(-10px);
+    background-color: var(--card-bg);
+    box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
+}
+
+
+/* --- About Page Styles --- */
+.about-us-image-container {
+    text-align: center;
+    margin-bottom: 3rem;
+}
+
+.about-us-image {
+    max-width: 80%;
+    height: auto;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.about-vision-approach {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    margin-top: 4rem;
+}
+
+.about-vision, .about-approach {
+    flex: 1 1 45%;
+    text-align: center;
+    padding: 1rem;
+}
+
+@media (max-width: 768px) {
+    .about-vision, .about-approach {
+        flex: 1 1 100%;
+        margin-bottom: 2rem;
+    }
+}
