@@ -11,6 +11,7 @@
     --bg-color: #fdfdfd;
     --text-color: var(--color-dark-2);
     --text-muted-color: #6c757d;
+    --title-color: var(--color-dark-1);
     --card-bg: var(--color-light);
     --card-border: #eee;
     --form-bg: #f8f9fa;
@@ -24,6 +25,7 @@
     --bg-color: #222831;
     --text-color: #e2e2e2;
     --text-muted-color: #888;
+    --title-color: var(--color-tan-2); /* Use light tan for titles in dark mode */
     --card-bg: #393E46;
     --card-border: #4a4a4a;
     --form-bg: #4a4a4a;
@@ -164,13 +166,16 @@ input:checked + .slider:before {
 /* --- Project Card Styles ('All Projects' page) --- */
 .project-card {
     border: 1px solid var(--card-border);
-    border-radius: 8px;
-    transition: transform 0.2s ease, box-shadow 0.2s ease, background-color 0.3s;
     background-color: var(--card-bg);
+    transition: transform 0.2s ease, box-shadow 0.2s ease, background-color 0.3s;
+    border-radius: 8px;
 }
 .project-card:hover {
     transform: translateY(-5px);
     box-shadow: 0 8px 16px rgba(0,0,0,0.1);
+}
+.project-card .card-title {
+    color: var(--title-color);
 }
 .card-link-wrapper {
     text-decoration: none;
@@ -206,6 +211,9 @@ input:checked + .slider:before {
     background-color: var(--card-bg);
     transition: background-color 0.3s, border-color 0.3s;
 }
+.flat-card .card-title {
+    color: var(--title-color);
+}
 .recent-issues-list .list-group-item {
     padding: 1.5rem;
     border: 1px solid var(--card-border);
@@ -215,6 +223,9 @@ input:checked + .slider:before {
     border-radius: 8px;
     box-shadow: 0 2px 5px var(--shadow-color);
     transition: background-color 0.3s, border-color 0.3s, color 0.3s;
+}
+.recent-issues-list .list-group-item .fw-bold {
+    color: var(--title-color);
 }
 .how-it-works-link {
     text-decoration: none;
@@ -259,7 +270,7 @@ input:checked + .slider:before {
     }
 }
 
-/* Other generic styles */
+/* --- Other Generic Styles --- */
 .bg-light {
     background-color: var(--card-bg) !important;
     transition: background-color 0.3s;
@@ -272,4 +283,9 @@ hr {
     background-color: #d1e7dd;
     color: #0f5132;
     border-color: #badbcc;
+}
+[data-theme="dark"] .alert-success {
+    background-color: #0f5132;
+    color: #d1e7dd;
+    border-color: #146c43;
 }
