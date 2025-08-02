@@ -12,7 +12,7 @@
     --text-color: var(--color-dark-2);
     --text-muted-color: #6c757d;
     --title-color: var(--color-dark-1);
-    --card-bg: var(--color-light);
+    --card-bg: #F9F7F3; /* Light tan background for cards */
     --card-border: #eee;
     --form-bg: #f8f9fa;
     --header-bg: var(--color-light);
@@ -26,7 +26,7 @@
     --text-color: #e2e2e2;
     --text-muted-color: #888;
     --title-color: var(--color-tan-2); /* Use light tan for titles in dark mode */
-    --card-bg: #393E46;
+    --card-bg: #393E46; /* In dark mode, this is the card color */
     --card-border: #4a4a4a;
     --form-bg: #4a4a4a;
     --header-bg: #2a2a2a;
@@ -98,13 +98,7 @@ input:checked + .slider:before {
     padding-bottom: 1rem;
     transition: background-color 0.3s, border-color 0.3s;
 }
-.navbar-brand img {
-    height: 40px; 
-}
 .navbar-brand-text {
-    font-size: 1.5rem;
-    font-weight: bold;
-    margin-left: 10px;
     color: var(--text-color);
 }
 .nav-link {
