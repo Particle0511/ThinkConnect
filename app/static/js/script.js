@@ -1,8 +1,10 @@
 document.addEventListener('DOMContentLoaded', function () {
 
+    // Initialize Bootstrap Tooltips
     const tooltipTriggerList = Array.from(document.querySelectorAll('[data-bs-toggle="tooltip"]'));
     tooltipTriggerList.map(tooltipTriggerEl => new bootstrap.Tooltip(tooltipTriggerEl));
 
+    // Add confirmation dialog for delete actions
     const deleteButtons = document.querySelectorAll('.confirm-delete');
     deleteButtons.forEach(button => {
         button.addEventListener('click', function (event) {
@@ -13,23 +15,27 @@ document.addEventListener('DOMContentLoaded', function () {
         });
     });
 
-    const themeToggle = document.getElementById('theme-toggle');
-    if (themeToggle) {
-        const currentTheme = localStorage.getItem('theme');
+    // Theme Toggle Logic
+    const themeCheckbox = document.getElementById('theme-checkbox');
+    const currentTheme = localStorage.getItem('theme');
 
-        if (currentTheme) {
-            document.documentElement.setAttribute('data-theme', currentTheme);
+    // Set initial theme and checkbox state from localStorage
+    if (currentTheme) {
+        document.documentElement.setAttribute('data-theme', currentTheme);
+        if (currentTheme === 'dark') {
+            themeCheckbox.checked = true;
         }
-
-        themeToggle.addEventListener('click', () => {
-            let theme = document.documentElement.getAttribute('data-theme');
-            if (theme === 'dark') {
-                document.documentElement.setAttribute('data-theme', 'light');
-                localStorage.setItem('theme', 'light');
-            } else {
-                document.documentElement.setAttribute('data-theme', 'dark');
-                localStorage.setItem('theme', 'dark');
-            }
-        });
     }
+
+    // Listen for changes on the checkbox to switch themes
+    themeCheckbox.addEventListener('change', function() {
+        if (this.checked) {
+            document.documentElement.setAttribute('data-theme', 'dark');
+            localStorage.setItem('theme', 'dark');
+        } else {
+            document.documentElement.setAttribute('data-theme', 'light');
+            localStorage.setItem('theme', 'light');
+        }
+    });
+
 });

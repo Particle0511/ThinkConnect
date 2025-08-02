@@ -35,7 +35,10 @@
                         </li>
                     {% endif %}
                     <li class="nav-item ms-3">
-                        <button class="btn btn-outline-secondary" id="theme-toggle">Toggle Theme</button>
+                        <label class="theme-switch" id="theme-toggle" for="theme-checkbox">
+                            <input type="checkbox" id="theme-checkbox" />
+                            <div class="slider"></div>
+                        </label>
                     </li>
                 </ul>
             </div>
@@ -53,7 +56,7 @@
                 {% endfor %}
             {% endif %}
         {% endwith %}
-        {% block content %}{@block content %}{% endblock %}
+        {% block content %}{% endblock %}
     </main>
 
     <footer class="footer mt-auto py-3">
