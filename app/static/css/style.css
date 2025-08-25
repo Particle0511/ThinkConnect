@@ -43,6 +43,13 @@ body {
     flex-direction: column;
     min-height: 100vh;
     transition: background-color 0.3s, color 0.3s;
+    background-image: url('../images/bg-light.jpg');
+    background-repeat: repeat;
+    background-attachment: fixed;
+}
+
+[data-theme="dark"] body {
+    background-image: url('../images/bg-dark.jpg');
 }
 
 main.container {
@@ -99,7 +106,12 @@ input:checked + .slider:before {
     transition: background-color 0.3s, border-color 0.3s;
 }
 .navbar-brand-text {
-    color: var(--text-color);
+    font-weight: 700;
+    font-size: 1.5rem;
+    color: var(--color-dark-1); /* Sets 'Think' to black */
+}
+.navbar-brand-text .brand-text-connect {
+    color: var(--color-tan-1); /* Sets 'Connect' to brown */
 }
 .nav-link {
     font-weight: bold;
@@ -282,4 +294,20 @@ hr {
     background-color: #0f5132;
     color: #d1e7dd;
     border-color: #146c43;
+}
+
+/* --- Team Section Styles (About Us Page) --- */
+.team-member-img {
+    width: 160px;
+    height: 160px;
+    object-fit: cover;
+    border-radius: 12px;
+    box-shadow: 0 4px 12px var(--shadow-color);
+    border: 3px solid var(--card-bg);
+    transition: transform 0.3s ease, filter 0.3s ease; /* For smooth animation */
+}
+
+.team-member-img:hover {
+    transform: scale(1.05);      /* Slightly zooms the image */
+    filter: brightness(1.1);   /* Makes it a little brighter */
 }
